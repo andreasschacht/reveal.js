@@ -1,94 +1,400 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+	<title>reveal.js</title>
 
-		<script src="https://use.typekit.net/dkq5epu.js"></script>
-		<script>try{Typekit.load({ async: true });}catch(e){}</script>
+	<script src="https://use.typekit.net/dkq5epu.js"></script>
+	<script>try {
+		Typekit.load({async: true});
+	} catch (e) {
+	}</script>
 
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/kaliber5.css">
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/kaliber5.css">
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>
-					<h1>Headline</h1>
-					<h2>Subline</h2>
-				</section>
-				<section>
-
-					<div class="id-card">
-						<img src="https://pbs.twimg.com/profile_images/503937168855691265/SjLlgV06.jpeg" alt="">
-
-						<dl>
-							<dt>Name</dt>
-							<dd>Simon Ihmig</dd>
-							<dt>Company</dt>
-							<dd><a href="http://www.kaliber5.de">kaliber5</a></dd>
-							<dt>Job title</dt>
-							<dd>Co-Founder, Web Developer, CTO</dd>
-							<dt>Email</dt>
-							<dd><a href="mailto:ihmig@kaliber5.de">ihmig@kaliber5.de</a></dd>
-							<dt>Twitter</dt>
-							<dd><a href="https://twitter.com/simonihmig">@simonihmig</a></dd>
-							<dt>Github</dt>
-							<dd><a href="https://github.com/simonihmig">@simonihmig</a></dd>
-						</dl>
-					</div>
-
-				</section>
-				<section data-markdown>
-					<script type="text/template">
-						## Real content comes here
-
-						Some text
-
-						```js
-						test('just some dummy code example', function(assert) {
-							let names = ['foo', 'bar'],
-							call(names.map(function(name) {
-								return name.toUpperCase()
-							});
-						});
-						```
-
-					</script>
-				</section>
-				<section>
-					<h1>Thank you</h1>
-				</section>
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+</head>
+<body>
+<div class="reveal">
+	<div class="slides">
+		<section data-markdown>
+			<script type="text/template">
+			# BDD with Ember
+			```gherkin
+			Scenario: Join Ember.HH
+			  Given you're a Developer
+			  When Ember aroused your interest
+			  Then you have to join the Ember.HH Group
+			```
+			</script>
+		</section>
+		<section>
+			<div class="id-card">
+				<dl>
+					<dt>Name</dt>
+					<dd>Andreas Schacht</dd>
+					<dt>Company</dt>
+					<dd><a href="http://www.kaliber5.de">kaliber5</a></dd>
+					<dt>Job title</dt>
+					<dd>Web Developer</dd>
+					<dt>Email</dt>
+					<dd><a href="mailto:schacht@kaliber5.de">schacht@kaliber5.de</a></dd>
+				</dl>
 			</div>
-		</div>
+		</section>
+		<section data-markdown>
+			<script type="text/template">
+				## BDD in short
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.js"></script>
+				<p class="fragment fade-left">outside-in methodology</p>
+				<p class="fragment fade-left">feature-set</p>
+				<p class="fragment fade-left">ubiquitous language</p>
+				<p class="fragment fade-left">stories</p>
+				<p class="fragment fade-left">scenarios, acceptance criterias</p>
+				<p class="fragment fade-left">semi-formal language</p>
 
-		<script>
-			// More info https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				history: true,
+			</script>
+		</section>
+		<section data-markdown>
+			<script type="text/template">
+				## Gherkin
+				```gherkin
+				Feature: Authenticate an user
+				  In order to access secured pages
+				  As an anonymous user
+				  I want to be able to authenticate me
 
-				// More info https://github.com/hakimel/reveal.js#dependencies
-				dependencies: [
-					{ src: 'plugin/markdown/marked.js' },
-					{ src: 'plugin/markdown/markdown.js' },
-					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
-				]
-			});
+				  Scenario: Insert valid data
+					Given I am an unauthenticated user
+					And I am on the login page
+					When I insert valid data in the form
+					And I submit the form
+					Then I should see a success message
+					And I should be authenticated
+				```
+			</script>
+		</section>
+		<section data-markdown>
+			<script type="text/template">
+				## Gherkin
+				<ul>
+					<li>Given</li>
+					<li>When</li>
+					<li>Then</li>
+					<span class="fragment fade-left">
+						<li>And</li>
+						<li>But</li>
+					</span>
+					<span class="fragment fade-left">
+						<li>Feature</li>
+						<li>Scenario</li>
+						<li>Background</li>
+					</span>
+				</ul>
+				</p>
+			</script>
+		</section>
+		<section data-markdown>
+			<script type="text/template">
+				## Gherkin
+				```gherkin
+				Feature: Authenticate an user
+				  ...
+
+				  Scenario: Insert valid data
+					...
+
+				  Scenario: Insert incomplete data
+					Given I am an unauthenticated user
+					And I am on the login page
+					When I insert valid email address in the form
+					But I do not fill the password field
+					And I submit the form
+					Then I should see a error message
+					And I should still be unauthenticated
+				```
+			</script>
+		</section>
+		<section data-markdown>
+			<script type="text/template">
+				## Gherkin
+				```gherkin
+				Feature: Authenticate an user
+				  ...
+
+				  Scenario: Insert valid data
+					...
+
+				  Scenario: Insert incomplete data
+					...
+
+				  Scenario: Insert invalid data
+					...
+				```
+			</script>
+		</section>
+		<section data-markdown>
+			<script type="text/template">
+				## Gherkin
+				```gherkin
+				Feature: Authenticate an user
+				  In order to secured restricted pages
+				  As an anonymous user
+				  I want to be able to authenticate me
+
+				  Background:
+					Given I am an unauthenticated user
+					And I am on the login page
+
+				  Scenario: Insert valid data
+					When I insert valid data in the form
+					...
+
+				  Scenario: Insert incomplete data
+					When I insert valid email address in the form
+					...
+				```
+			</script>
+		</section>
+		<section data-markdown>
+			<script type="text/template">
+				## Benefits for us
+				<ul>
+					<li class="fragment fade-left">well defined chunks of work
+						<ul>
+							<li class="fragment fade-left">estimate cost</li>
+							<li class="fragment fade-left">where to start</li>
+							<li class="fragment fade-left">when it's done</li>
+						</ul>
+					</li>
+					<li class="fragment fade-left">test
+						<ul>
+							<li class="fragment fade-left">what to test</li>
+							<li class="fragment fade-left">what NOT to test</li>
+							<li class="fragment fade-left">how to call the test</li>
+							<li class="fragment fade-left">suited for test automation</li>
+						</ul>
+					</li>
+				</ul>
+			</script>
+		</section>
+		<section data-markdown>
+			<script type="text/template">
+				## Yadda
+				A BDD JavaScript Library
+				- parse feature files
+				- mapping to step library
+				- dictionary
+					- converter
+			</script>
+		</section>
+
+		<section data-markdown>
+			<script type="text/template">
+				## Yadda
+				```bash
+				> ember install ember-cli-yadda
+				```
+				add files:
+				```bash
+				/tests/acceptance/steps/steps.js
+				/tests/unit/steps/steps.js
+				```
+
+				add blueprints:
+				```bash
+				> ember g feature [feature title]
+				> ember g feature-unit [feature title]
+				```
+			</script>
+		</section>
+
+		<section data-markdown>
+			<script type="text/template">
+				## Yadda
+				is not stable
+				```js
+				// ember-cli-build.js
+
+				var app = new EmberApp({
+				  'ember-cli-yadda': {
+				    'yaddaVersion': '0.17.6'
+				  }
+				});
+				```
+			</script>
+		</section>
+
+		<section data-markdown>
+			<script type="text/template">
+				## Yadda
+				```bash
+				> ember g feature 'Create an user account'
+				```
+				```gherkin
+				# tests/acceptance/create-an-user-account.feature
+				Feature: Create an user account
+
+				  Scenario: the one where I type ember g feature
+					Given I type "Ember g feature make-feature"
+					When I look in the folder
+					Then I should find a file
+				```
+				```js
+				// tests/acceptance/steps/create-an-user-account-steps.js
+				import steps from './steps';
+
+				// step definitions that are shared between features should be moved to the
+				// tests/acceptance/steps/steps.js file
+
+				export default function() {
+				  return steps()
+				  .then('I should find a file', (next) => {
+					// Add your own assert library
+					next();
+				  });
+				}
+				```
+			</script>
+		</section>
+		<section data-markdown>
+			<script type="text/template">
+				## Yadda
+				```gherkin
+				# tests/acceptance/create-an-user-account.feature
+				Feature: Authenticate an user
+				  In order to access secured pages
+				  As an anonymous user
+				  I want to be able to authenticate me
+
+				  Scenario: Insert valid data
+					Given I am an unauthenticated user
+					And I am on the login page
+					When I insert valid data in the form
+					And I submit the form
+					Then I should see a success message
+					And I should be authenticated
+				```
+			</script>
+		</section>
+		<section data-markdown>
+
+		<script type="text/template">
+			## Yadda
+			```js
+			// tests/acceptance/steps/create-an-user-account-steps.js
+			import steps from './steps';
+			import { expect } from 'chai';
+
+			// step definitions that are shared between features should be moved to the
+			// tests/acceptance/steps/steps.js file
+
+			export default function() {
+			  return steps()
+			  .given('I am an unauthenticated user', function(next) {
+				let container = window.application.__container__;
+				let userService = container.lookup('service:user');
+				userService.logout();
+				expect(userService.isAuthenticated()).to.be.false;
+				next();
+			  });
+			}
+			```
 		</script>
-	</body>
+		</section>
+		<section data-markdown>
+		<script type="text/template">
+			## Yadda
+			```js
+			// tests/acceptance/steps/steps.js
+			import yadda from '../../helpers/yadda';
+			import { expect } from 'chai';
+
+
+			export default function() {
+			  return yadda.localisation.English.library()
+			  .given('I am on the $page page', function(page, next) {
+				visit('/${page}');
+				andThen(() => {
+					expect(currentUrl()).to.be.equal('/${page}');
+					next();
+				});
+			  })
+			  .given('I am an unauthenticated user', function(next) {
+				let userService = window.application.__container__.lookup('service:user');
+				userService.logout();
+				expect(userService.isAuthenticated()).to.be.false;
+				next();
+			  });
+			}
+			```
+		</script>
+		</section>
+		<section data-markdown>
+		<script type="text/template">
+			## Yadda
+			```bash
+			> ember test
+
+			not ok 1 PhantomJS 2.1 - Feature: Authenticate an user: Insert valid data
+			---
+			message: >
+			Scenario cannot be interpreted
+			Given I am an unauthenticated user
+			And I am on the login page
+			When I insert valid data in the form <-- Undefined Step
+			And I submit the form <-- Undefined Step
+			Then I should see a success message <-- Undefined Step
+			And I should be authenticated <-- Undefined Step
+
+			1..1
+			# tests 1
+			# pass  0
+			# skip  0
+			# fail  1
+			Not all tests passed.
+			Error: Not all tests passed.
+
+			```
+		</script>
+		</section>
+
+		<section>
+			<h1>Thank you</h1>
+		</section>
+	</div>
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+
+<script>
+	// More info https://github.com/hakimel/reveal.js#configuration
+	Reveal.initialize({
+		history: true,
+
+		// More info https://github.com/hakimel/reveal.js#dependencies
+		dependencies: [
+			{src: 'plugin/markdown/marked.js'},
+			{src: 'plugin/markdown/markdown.js'},
+			{src: 'plugin/notes/notes.js', async: true},
+			{
+				src: 'plugin/highlight/highlight.js', async: true, callback: function() {
+				hljs.initHighlightingOnLoad();
+			}
+			}
+		]
+	});
+</script>
+</body>
 </html>
