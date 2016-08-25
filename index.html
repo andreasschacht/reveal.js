@@ -58,9 +58,9 @@
 
 				<p class="fragment fade-left">outside-in methodology</p>
 				<p class="fragment fade-left">feature-set</p>
-				<p class="fragment fade-left">ubiquitous language</p>
 				<p class="fragment fade-left">stories</p>
 				<p class="fragment fade-left">scenarios, acceptance criterias</p>
+				<p class="fragment fade-left">ubiquitous language</p>
 				<p class="fragment fade-left">semi-formal language</p>
 
 			</script>
@@ -239,11 +239,11 @@
 			<script type="text/template">
 				## Yadda
 				```bash
-				> ember g feature 'Create an user account'
+				> ember g feature 'Authenticate an user'
 				```
 				```gherkin
-				# tests/acceptance/create-an-user-account.feature
-				Feature: Create an user account
+				# tests/acceptance/authenticate-an-user.feature
+				Feature: Authenticate an user
 
 				  Scenario: the one where I type ember g feature
 					Given I type "Ember g feature make-feature"
@@ -251,7 +251,7 @@
 					Then I should find a file
 				```
 				```js
-				// tests/acceptance/steps/create-an-user-account-steps.js
+				// tests/acceptance/steps/authenticate-an-user-steps.js
 				import steps from './steps';
 
 				// step definitions that are shared between features should be moved to the
@@ -271,7 +271,7 @@
 			<script type="text/template">
 				## Yadda
 				```gherkin
-				# tests/acceptance/create-an-user-account.feature
+				# tests/acceptance/authenticate-an-user.feature
 				Feature: Authenticate an user
 				  In order to access secured pages
 				  As an anonymous user
@@ -292,7 +292,7 @@
 		<script type="text/template">
 			## Yadda
 			```js
-			// tests/acceptance/steps/create-an-user-account-steps.js
+			// tests/acceptance/steps/authenticate-an-user-steps.js
 			import steps from './steps';
 			import { expect } from 'chai';
 
